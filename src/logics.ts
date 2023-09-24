@@ -26,3 +26,16 @@ export const createProduct = (req: Request, res: Response) => {
 
     return res.status(201).json(newProduct)
 }
+
+export const getAllProducts = (req: Request, res: Response) => {
+    let total = 0;
+
+    market.forEach((product) => {
+        total = total + product.price
+    }) 
+
+    return res.status(200).json({
+        total: total,
+        products: market
+    })
+}

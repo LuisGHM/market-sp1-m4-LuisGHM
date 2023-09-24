@@ -1,12 +1,14 @@
 import express, { Request, Response } from "express";
 import { market } from "./database";
-import { createProduct } from "./logics";
+import { createProduct, getAllProducts } from "./logics";
 
 const app = express();
 
 app.use(express.json());
 
 app.post("/products", createProduct);
+
+app.get("/products", getAllProducts);
 
 const PORT = 3000;
 
