@@ -39,3 +39,9 @@ export const getAllProducts = (req: Request, res: Response) => {
         products: market
     })
 }
+
+export const getProductById = (req: Request, res: Response) => {
+    const foundProduct = market.find(Product => Product.id === +req.params.id);
+
+    return res.status(200).json(foundProduct);
+}
