@@ -70,5 +70,12 @@ export const editProduct = (req: Request, res: Response) => {
     return res.status(200).json(editProduct);
 }
 
+export const deleteProduct = (req: Request, res: Response) => {
+    const index = market.findIndex(product => product.id == +req.params.id);
+    market.splice(index, 1);
+
+    return res.status(204).json(); 
+}
+
 
 
