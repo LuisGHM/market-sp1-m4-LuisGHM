@@ -1,20 +1,22 @@
 import express, { Request, Response } from "express";
 import { market } from "./database";
 import { createProduct, deleteProduct, editProduct, getAllProducts, getProductById } from "./logics";
+import { nameValidation } from "./middlewares/nameValidation";
+import { existId } from "./middlewares/existId";
 
 const app = express();
 
 app.use(express.json());
 
-app.post("/products", createProduct);
+app.post("/products", nameValidation, createProduct);
 
 app.get("/products", getAllProducts);
 
-app.get("/products/:id", getProductById);
+app.get("/products/:id", existId, getProductById);
 
-app.patch("/products/:id", editProduct);
+app.patch("/products/:id", existId, nameValidation, editProduct);
 
-app.delete("/products/:id", deleteProduct);
+app.delete("/products/:id", existId, deleteProduct);
 
 const PORT = 3000;
 

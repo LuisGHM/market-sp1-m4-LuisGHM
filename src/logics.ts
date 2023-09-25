@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { market } from "./database";
-import { IProduct } from "./interfaces";
+import { nameValidation } from "./middlewares/nameValidation";
 
 const expirationDate = () => {
     const dataAtual = new Date();
@@ -47,7 +47,7 @@ export const getProductById = (req: Request, res: Response) => {
     return res.status(200).json(foundProduct);
 }
 
-export const editProduct = (req: Request, res: Response) => {
+export const editProduct = (req: Request, res: Response, next: NextFunction) => {
     const index = market.findIndex(product => product.id == +req.params.id);
     const foundProduct = market.find(Product => Product.id == +req.params.id);
 
