@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { market } from "./database";
-import { createProduct, getAllProducts, getProductById } from "./logics";
+import { createProduct, editProduct, getAllProducts, getProductById } from "./logics";
 
 const app = express();
 
@@ -11,6 +11,8 @@ app.post("/products", createProduct);
 app.get("/products", getAllProducts);
 
 app.get("/products/:id", getProductById);
+
+app.patch("/products/:id", editProduct)
 
 const PORT = 3000;
 
