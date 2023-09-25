@@ -1,5 +1,4 @@
-import express, { Request, Response } from "express";
-import { market } from "./database";
+import express from "express";
 import { createProduct, deleteProduct, editProduct, getAllProducts, getProductById } from "./logics";
 import { nameValidation } from "./middlewares/nameValidation";
 import { existId } from "./middlewares/existId";
@@ -22,4 +21,4 @@ const PORT = 3000;
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
-})
+});

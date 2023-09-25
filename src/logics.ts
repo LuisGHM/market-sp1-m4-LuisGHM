@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import { market } from "./database";
-import { nameValidation } from "./middlewares/nameValidation";
 
 const expirationDate = () => {
     const dataAtual = new Date();
@@ -21,11 +20,11 @@ export const createProduct = (req: Request, res: Response) => {
         section: req.body.section,
         calories: req.body.calories,
         expirationDate: expirationDate(),
-    } 
+    }; 
 
     market.push(newProduct);
 
-    return res.status(201).json(newProduct)
+    return res.status(201).json(newProduct);
 }
 
 export const getAllProducts = (req: Request, res: Response) => {
@@ -33,12 +32,12 @@ export const getAllProducts = (req: Request, res: Response) => {
 
     market.forEach((product) => {
         total = total + product.price
-    }) 
+    });
 
     return res.status(200).json({
         total: total,
         products: market
-    })
+    });
 }
 
 export const getProductById = (req: Request, res: Response) => {
@@ -63,7 +62,7 @@ export const editProduct = (req: Request, res: Response, next: NextFunction) => 
         calories: req.body.calories ? req.body.calories : foundProduct.calories,
         section: foundProduct.section,
         expirationDate: foundProduct.expirationDate
-    }
+    };
 
     market.splice(index, 1, editProduct);
 

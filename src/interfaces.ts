@@ -1,9 +1,9 @@
 export interface IProduct {
-    id: number; //Criar automaticamente 
+    id: number;
     name: string;
-    price: number; // centavos
-    weight: number; // gramas
-    section: "food" | "cleaning"; // Restrito a "food" ou "cleaning"
+    price: number; 
+    weight: number; 
+    section: "food" | "cleaning"; 
     calories?: number | null;
-    expirationDate: Date; // mexer automatico
+    expirationDate: Date; 
 }
