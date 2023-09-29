@@ -10,10 +10,18 @@ const expirationDate = () => {
 }
 
 export const createProduct = (req: Request, res: Response) => {
-    const newid = market.length + 1;
+    let id: any;
+
+    market.forEach((product) => {
+        id = product.id + 1;
+    })
+
+    if(id == undefined){
+        id = 1;
+    }  
 
      const newProduct = {
-        id: newid,
+        id: id,
         name: req.body.name,
         price: req.body.price,
         weight: req.body.weight,
